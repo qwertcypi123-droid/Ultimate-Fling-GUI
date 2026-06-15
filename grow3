@@ -6,5 +6,5 @@ end)
 
 task.spawn(function()
     -- 第二個腳本
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/qwertcypi123-droid/Ultimate-Fling-GUI/refs/heads/main/grow2'))()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/qwertcypi123-droid/Ultimate-Fling-GUI/refs/heads/main/zhou_fling.lua'))()
 end)
