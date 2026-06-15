@@ -1,9 +1,8 @@
 --[[
-    zhou's Multi-Target Fling, Touch Aura, Fast Interact & Fixed Speed
+    zhou's Multi-Target Fling, Touch Aura & Fixed Speed
     - 完整保留原版手動多目標 Fling 功能
     - 【終極修復 Aura】：完全使用原版 SkidFling 的 CFrame 穿插撞擊原理。
     - 【消除僵直】：加入強制喚醒 (GettingUp) 與全肢體動能清除，撞完歸位瞬間可立刻行走，0 僵直。
-    - 【瞬間互動】：自動將所有 ProximityPrompt 的長按時間改為 0 秒。
     - 【加速修復】：開啟時維持 50，關閉時完美恢復預設速度 16。
 ]]
 
@@ -23,7 +22,7 @@ ScreenGui.Name = "ZhouFlingGUI"
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Parent = game:GetService("CoreGui")
 
--- Main Frame (拉長到 440 以容納新按鈕)
+-- Main Frame
 local MainFrame = Instance.new("Frame")
 MainFrame.Size = UDim2.new(0, 300, 0, 440)
 MainFrame.Position = UDim2.new(0.5, -150, 0.5, -220)
@@ -642,23 +641,3 @@ end)
 RefreshPlayerList()
 UpdateStatus()
 Message("Loaded", "zhou's No-Stun Aura Loaded!", 3)
-
--- ==================== 瞬間互動 (Fast Interact) ====================
--- 使用 task.spawn 讓它在背景執行，不影響主程式運作
-task.spawn(function()
-    -- 遍歷遊戲中目前已存在的所有物件
-    for _, item in pairs(game:GetDescendants()) do
-        if item:IsA("ProximityPrompt") then
-            item.HoldDuration = 0
-        end
-    end
-
-    -- 監聽未來新生成的物件 (例如地圖刷新、新掉落物)
-    game.DescendantAdded:Connect(function(item)
-        if item:IsA("ProximityPrompt") then
-            item.HoldDuration = 0
-        end
-    end)
-    
-    Message("Fast Interact", "ProximityPrompt Bypass Active", 3)
-end)
