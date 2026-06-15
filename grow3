@@ -1,0 +1,10 @@
+-- 將這段代碼複製到你的 Executor 中執行
+task.spawn(function()
+    -- 第一個腳本
+    loadstring(game:HttpGet('https://pastebin.com/raw/3Rnd9rHf'))()
+end)
+
+task.spawn(function()
+    -- 第二個腳本
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/qwertcypi123-droid/Ultimate-Fling-GUI/refs/heads/main/grow2'))()
+end)
